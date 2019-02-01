@@ -78,6 +78,10 @@ public class SelenideIndexPage {
         $(url).should(visible);
     }
 
+    public void checkCheckbox (String url) {
+        $(url).shouldBe(checked);
+    }
+
 
 
 }

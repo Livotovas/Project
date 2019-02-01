@@ -102,5 +102,13 @@ public class SelenideTest {
         indexPage.checkVisible("body > div > div.uui-main-container.page-inside > main > div.main-content > div > button");
         indexPage.checkVisible("body > div > div.uui-main-container.page-inside > main > div.main-content > div > input");
 
+        //8 Assert that there is Right Section
+        indexPage.checkVisible("#mCSB_2_container > section:nth-child(1) > div.info-panel-body.info-panel-body-log");
+
+        //9 Assert that there is Left Section
+        indexPage.checkVisible("#mCSB_1_container > ul > li.menu-title.active > ul > li:nth-child(6) > a");
+
+        //10 Select checkboxes
+        //indexPage.checkCheckbox("body > div > div.uui-main-container.page-inside > main > div.main-content > div > div:nth-child(2) > label:nth-child(1) > input[type=\"checkbox\"]");
     }
 }
