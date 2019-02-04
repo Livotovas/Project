@@ -1,10 +1,12 @@
-package hw2;
+package hw2.Exercise2;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.testng.annotations.*;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Test;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,10 +14,8 @@ import java.util.List;
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
-/**
- * Created by vasuha on 30.01.2019.
- */
-public class FifthTest {
+
+public class SmokeOrRegressionTests {
     private WebDriver driver;
 
     @BeforeTest
@@ -91,7 +91,7 @@ public class FifthTest {
         assertEquals(driver.findElement(By.cssSelector("body > div > div.uui-main-container > main > div.main-content > h3:nth-child(3) > a")).getText(), "JDI GITHUB");
 
         //12 Assert that JDI GITHUB is a link and has a proper URL
-        //assertTrue(driver.findElement(By.cssSelector("body > div > div.uui-main-container > main > div.main-content > h3:nth-child(3) > a")).getAttribute("href").isEmpty());
+        assertTrue(driver.findElement(By.className("sidebar-menu")).isDisplayed());
 
         //13 Assert that there is Left Section
         assertTrue(driver.findElement(By.className("sidebar-menu")).isDisplayed());
@@ -162,7 +162,7 @@ public class FifthTest {
         assertEquals(driver.findElement(By.cssSelector("body > div > div.uui-main-container > main > div.main-content > h3:nth-child(3) > a")).getText(), "JDI GITHUB");
 
         //12 Assert that JDI GITHUB is a link and has a proper URL
-        //assertTrue(driver.findElement(By.cssSelector("body > div > div.uui-main-container > main > div.main-content > h3:nth-child(3) > a")).getAttribute("href").isEmpty());
+        assertTrue(driver.findElement(By.className("sidebar-menu")).isDisplayed());
 
         //13 Assert that there is Left Section
         assertTrue(driver.findElement(By.className("sidebar-menu")).isDisplayed());
@@ -233,7 +233,7 @@ public class FifthTest {
         assertEquals(driver.findElement(By.cssSelector("body > div > div.uui-main-container > main > div.main-content > h3:nth-child(3) > a")).getText(), "JDI GITHUB");
 
         //12 Assert that JDI GITHUB is a link and has a proper URL
-        //assertTrue(driver.findElement(By.cssSelector("body > div > div.uui-main-container > main > div.main-content > h3:nth-child(3) > a")).getAttribute("href").isEmpty());
+        assertTrue(driver.findElement(By.className("sidebar-menu")).isDisplayed());
 
         //13 Assert that there is Left Section
         assertTrue(driver.findElement(By.className("sidebar-menu")).isDisplayed());

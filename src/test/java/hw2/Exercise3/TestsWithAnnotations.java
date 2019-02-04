@@ -1,4 +1,4 @@
-package hw2;
+package hw2.Exercise3;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -9,47 +9,42 @@ import org.testng.annotations.*;
 import java.util.ArrayList;
 import java.util.List;
 
+import static java.lang.System.setProperty;
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
-import static java.lang.System.setProperty;
 
-/**
- * Created by vasuha on 31.01.2019.
- */
-public class TestWithAnnotations {
+public class TestsWithAnnotations {
     private WebDriver driver;
 
-   // @BeforeSuite
-    //public  void beforeSuite(){
-      //  String driverPath = "src\\main\\resources\\chromedriver.exe";
-        //setProperty("webdriver.chrome.driver", driverPath);
-    //}
+     @BeforeSuite
+    public  void beforeSuite(){
+         String driverPath = "src\\main\\resources\\chromedriver.exe";
+         setProperty("webdriver.chrome.driver", driverPath);
+    }
+
     @BeforeClass
     public void beforeClass(){
-       WebDriver driver = new ChromeDriver();
+        driver = new ChromeDriver();
     }
 
     @BeforeMethod
     public void beforeMethod() {
-       // driver = new ChromeDriver();
-
         driver.manage().window().maximize();
     }
 
-   // @AfterMethod
-    //public  void afterMethod() {
-        //15 Close driver
-      //  System.out.println(driver.getTitle());
-    //}
+    @AfterMethod
+    public  void afterMethod() {
+     System.out.println(driver.getTitle());
+    }
 
-    //@AfterClass
-    //public  void afterClass() {
-      //  System.out.println(System.currentTimeMillis());
-   // }
+    @AfterClass
+    public  void afterClass() {
+        driver.close();
+     }
 
     @AfterSuite
     public void afterSuit(){
-        driver.close();
+        System.out.println(System.currentTimeMillis());
     }
 
     @Test
@@ -125,3 +120,4 @@ public class TestWithAnnotations {
     }
 
 }
+
