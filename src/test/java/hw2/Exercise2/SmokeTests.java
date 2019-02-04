@@ -14,6 +14,9 @@ import java.util.List;
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
+/**
+ * Created by vasuha on 04.02.2019.
+ */
 public class SmokeTests {
     private WebDriver driver;
 
@@ -242,4 +245,3 @@ public class SmokeTests {
         assertTrue(driver.findElement(By.className("footer-bg")).isDisplayed());
     }
 }
-

@@ -16,10 +16,10 @@ import static org.testng.Assert.assertTrue;
 public class TestsWithAnnotations {
     private WebDriver driver;
 
-     @BeforeSuite
+    @BeforeSuite
     public  void beforeSuite(){
-         String driverPath = "src\\main\\resources\\chromedriver.exe";
-         setProperty("webdriver.chrome.driver", driverPath);
+        String driverPath = "src\\main\\resources\\chromedriver.exe";
+        setProperty("webdriver.chrome.driver", driverPath);
     }
 
     @BeforeClass
@@ -34,13 +34,13 @@ public class TestsWithAnnotations {
 
     @AfterMethod
     public  void afterMethod() {
-     System.out.println(driver.getTitle());
+        System.out.println(driver.getTitle());
     }
 
     @AfterClass
     public  void afterClass() {
         driver.close();
-     }
+    }
 
     @AfterSuite
     public void afterSuit(){
@@ -120,4 +120,3 @@ public class TestsWithAnnotations {
     }
 
 }
-

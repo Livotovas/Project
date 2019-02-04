@@ -14,7 +14,9 @@ import java.util.List;
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
-
+/**
+ * Created by vasuha on 04.02.2019.
+ */
 public class SmokeOrRegressionTests {
     private WebDriver driver;
 
