@@ -1,5 +1,6 @@
 package hw4;
 
+import base.SeleniumBase;
 import lesson4.SelenideIndexPage;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
@@ -8,13 +9,15 @@ import org.testng.annotations.Test;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import static com.codeborne.selenide.Selenide.close;
 import static com.codeborne.selenide.Selenide.open;
 import static com.codeborne.selenide.Selenide.page;
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
+import static lesson4.SelenideIndexPage.*;
 
-public class SelenideTest {
+public class SelenideTest extends SeleniumBase{
     private SelenideIndexPage indexPage;
 
 
@@ -28,6 +31,7 @@ public class SelenideTest {
         //1 Open test site by URL
         open("https://epam.github.io/JDI/index.html");
         indexPage = page(SelenideIndexPage.class);
+       // driver.manage().timeouts().pageLoadTimeout(10000, TimeUnit.MINUTES);
     }
 
     @AfterMethod
@@ -83,16 +87,7 @@ public class SelenideTest {
 
         //7 Open through the header menu Service -> Different Elements Page
         open("https://epam.github.io/JDI/different-elements.html");
-        indexPage.checkVisible("body > div > div.uui-main-container.page-inside > main > div.main-content > div > div:nth-child(2) > label:nth-child(1) > input[type=\"checkbox\"]");
-        indexPage.checkVisible("body > div > div.uui-main-container.page-inside > main > div.main-content > div > div:nth-child(2) > label:nth-child(2) > input[type=\"checkbox\"]");
-        indexPage.checkVisible("body > div > div.uui-main-container.page-inside > main > div.main-content > div > div:nth-child(2) > label:nth-child(3) > input[type=\"checkbox\"]");
-        indexPage.checkVisible("body > div > div.uui-main-container.page-inside > main > div.main-content > div > div:nth-child(2) > label:nth-child(4) > input[type=\"checkbox\"]");
-        indexPage.checkVisible("body > div > div.uui-main-container.page-inside > main > div.main-content > div > div:nth-child(3) > label:nth-child(1) > input[type=\"radio\"]");
-        indexPage.checkVisible("body > div > div.uui-main-container.page-inside > main > div.main-content > div > div:nth-child(3) > label:nth-child(2) > input[type=\"radio\"]");
-        indexPage.checkVisible("body > div > div.uui-main-container.page-inside > main > div.main-content > div > div:nth-child(3) > label:nth-child(3) > input[type=\"radio\"]");
-        indexPage.checkVisible("body > div > div.uui-main-container.page-inside > main > div.main-content > div > div:nth-child(3) > label:nth-child(4) > input[type=\"radio\"]");
-        indexPage.checkVisible("body > div > div.uui-main-container.page-inside > main > div.main-content > div > button");
-        indexPage.checkVisible("body > div > div.uui-main-container.page-inside > main > div.main-content > div > input");
+        indexPage.checkMenu();
 
         //8 Assert that there is Right Section
         indexPage.checkVisible("#mCSB_2_container > section:nth-child(1) > div.info-panel-body.info-panel-body-log");
@@ -101,6 +96,29 @@ public class SelenideTest {
         indexPage.checkVisible("#mCSB_1_container > ul > li.menu-title.active > ul > li:nth-child(6) > a");
 
         //10 Select checkboxes
-        //indexPage.checkCheckbox("body > div > div.uui-main-container.page-inside > main > div.main-content > div > div:nth-child(2) > label:nth-child(1) > input[type=\"checkbox\"]");
+        indexPage.clickCheckbox(new DifferentElements[]{DifferentElements.WATER , DifferentElements.WIND});
+
+        //11 Assert that for each checkbox there is an individual log row and value is corresponded to the status of checkbox. 
+        indexPage.checkCheckboxLogs(new DifferentElements[]{DifferentElements.WATER, DifferentElements.WIND});
+
+
+        //12 Select radio
+        indexPage.clickRadio(new DifferentElements[]{DifferentElements.SELEN});
+
+        //13 Assert that for radiobutton there is a log row and value is corresponded to the status of radiobutton. 
+        indexPage.checkRadioLogs(new DifferentElements[]{DifferentElements.SELEN});
+
+        //14 Select in dropdown
+        indexPage.clickDropdown(new DropdownElements[] {DropdownElements.YELLOW});
+
+        //15 Assert that for dropdown there is a log row and value is corresponded to the selected value. 
+        indexPage.checkDropdownLogs(new DropdownElements[] {DropdownElements.YELLOW});
+
+        //16 Unselect and assert checkboxes
+        indexPage.clickCheckbox(new DifferentElements[]{DifferentElements.WATER , DifferentElements.WIND});
+
+        //17 Assert that for each checkbox there is an individual log row and value is corresponded to the status of checkbox. 
+        indexPage.checkCheckboxLogs(new DifferentElements[]{DifferentElements.WATER, DifferentElements.WIND});
+
     }
 }
