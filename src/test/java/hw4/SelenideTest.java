@@ -52,38 +52,11 @@ public class SelenideTest extends SeleniumBase{
 
         //5 Click on "Service" subcategory in the header and check that drop down contains options
         indexPage.clickService();
-        List<String> serviceUrls = new ArrayList<String>();
-        List<String> texts = new ArrayList<String>();
-        serviceUrls.add("body > header > div > nav > ul.uui-navigation.nav.navbar-nav.m-l8 > li.dropdown.open > ul > li:nth-child(1) > a");
-        serviceUrls.add("body > header > div > nav > ul.uui-navigation.nav.navbar-nav.m-l8 > li.dropdown.open > ul > li:nth-child(2) > a");
-        serviceUrls.add("body > header > div > nav > ul.uui-navigation.nav.navbar-nav.m-l8 > li.dropdown.open > ul > li:nth-child(3) > a");
-        serviceUrls.add("body > header > div > nav > ul.uui-navigation.nav.navbar-nav.m-l8 > li.dropdown.open > ul > li:nth-child(4) > a");
-        serviceUrls.add("body > header > div > nav > ul.uui-navigation.nav.navbar-nav.m-l8 > li.dropdown.open > ul > li:nth-child(5) > a");
-        serviceUrls.add("body > header > div > nav > ul.uui-navigation.nav.navbar-nav.m-l8 > li.dropdown.open > ul > li:nth-child(6) > a");
-        serviceUrls.add("body > header > div > nav > ul.uui-navigation.nav.navbar-nav.m-l8 > li.dropdown.open > ul > li:nth-child(7) > a");
-        serviceUrls.add("body > header > div > nav > ul.uui-navigation.nav.navbar-nav.m-l8 > li.dropdown.open > ul > li:nth-child(8) > a");
-        texts.add("Support");
-        texts.add("Dates");
-        texts.add("Complex Table");
-        texts.add("Simple Table");
-        texts.add("User Table");
-        texts.add("Table with pages");
-        texts.add("Different elements");
-        texts.add("Performance");
-        indexPage.checkList(serviceUrls, texts);
+        indexPage.checkServiceDropdown(Texts.values());
 
         //6 Click on Service subcategory in the left section and check that drop down contains options
         indexPage.clickSideService();
-        List <String> sideUrls = new ArrayList<String>();
-        sideUrls.add("#mCSB_1_container > ul > li:nth-child(3) > ul > li:nth-child(1) > a > p > span");
-        sideUrls.add("#mCSB_1_container > ul > li:nth-child(3) > ul > li:nth-child(2) > a");
-        sideUrls.add("#mCSB_1_container > ul > li:nth-child(3) > ul > li:nth-child(3) > a > span");
-        sideUrls.add("#mCSB_1_container > ul > li:nth-child(3) > ul > li:nth-child(4) > a > span");
-        sideUrls.add("#mCSB_1_container > ul > li:nth-child(3) > ul > li:nth-child(5) > a > span");
-        sideUrls.add("#mCSB_1_container > ul > li:nth-child(3) > ul > li:nth-child(6) > a > span");
-        sideUrls.add("#mCSB_1_container > ul > li:nth-child(3) > ul > li:nth-child(7) > a > span");
-        sideUrls.add("#mCSB_1_container > ul > li:nth-child(3) > ul > li:nth-child(8) > a");
-        indexPage.checkList(sideUrls, texts);
+        indexPage.checkLeftServiceDropdown(Texts.values());
 
         //7 Open through the header menu Service -> Different Elements Page
         open("https://epam.github.io/JDI/different-elements.html");

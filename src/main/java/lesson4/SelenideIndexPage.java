@@ -25,6 +25,12 @@ public class SelenideIndexPage {
     @FindBy(css = "body > header > div > nav > ul.uui-navigation.nav.navbar-nav.m-l8 > li.dropdown > a")
     private SelenideElement service;
 
+    @FindBy(css = ".dropdown-menu li a")
+    private ElementsCollection serviceDropdown;
+
+    @FindBy(css = ".menu-title:nth-of-type(3) ul a")
+    private ElementsCollection leftServiceDropdown;
+
     @FindBy(css = ".label-checkbox")
     private ElementsCollection checkBoxes;
 
@@ -73,6 +79,28 @@ public class SelenideIndexPage {
         YELLOW
     }
 
+    public enum Texts {
+        SUPPORT("Support"),
+        DATES("Dates"),
+        COMPLEX_TABLE("Complex Table"),
+        SIMPLE_TABLE("Simple Table"),
+        USER_TABLE("User Table"),
+        TABLE_WITH_PAGE("Table with pages"),
+        DIFFERENT_ELEMENTS("Different elements"),
+        PERFORMANCE("Performance");
+
+        private String text;
+
+        Texts(String text) {
+            this.text = text;
+        }
+
+        @Override
+        public String toString(){
+            return this.text;
+        }
+    }
+    
 
     public void login(String name, String password) {
         loginIcon.click();
@@ -99,9 +127,15 @@ public class SelenideIndexPage {
     }
 
 
-    public void checkList(List<String> url, List<String> txt) {
-        for (int j = 0; j < url.size(); j++) {
-            $(url.get(j)).shouldHave(text(txt.get(j)));
+    public void checkServiceDropdown( Texts[] serviceText) {
+        for (int j = 0; j<serviceText.length; j++) {
+            serviceDropdown.get(j).shouldHave(text(serviceText[j].toString()));
+        }
+    }
+
+    public void checkLeftServiceDropdown( Texts[] serviceText) {
+        for (int j = 0; j<serviceText.length; j++) {
+            leftServiceDropdown.get(j).shouldHave(text(serviceText[j].toString()));
         }
     }
 
