@@ -27,3 +27,4 @@ hs_err_pid*
 /.idea/
 /.idea/SecondProject.iml
 /testing-winter-2019.iml
+!/.idea/SecondProject.iml
