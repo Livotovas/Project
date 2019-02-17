@@ -1,6 +1,7 @@
 package hw2.Exercise2;
 
 
+import base.SeleniumBase;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -15,7 +16,7 @@ import java.util.List;
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
-public class BothSmokeAndRegressionTests {
+public class BothSmokeAndRegressionTests extends SeleniumBase{
     private WebDriver driver;
 
     @BeforeTest
