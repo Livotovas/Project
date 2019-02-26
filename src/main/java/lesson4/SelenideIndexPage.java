@@ -1,27 +1,23 @@
 package lesson4;
 
 
-import com.codeborne.selenide.CollectionCondition;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
-import com.codeborne.selenide.collections.SizeLessThanOrEqual;
 import org.openqa.selenium.support.FindBy;
-import org.testng.Assert;
 
-import java.util.List;
-
-import static com.codeborne.selenide.CollectionCondition.*;
-import static com.codeborne.selenide.Condition.checked;
+import static com.codeborne.selenide.CollectionCondition.sizeGreaterThanOrEqual;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.$;
-import static org.testng.Assert.*;
+import static org.testng.Assert.assertTrue;
 
+// TODO Enums should not be here
 public class SelenideIndexPage {
     @FindBy(css = "[id='user-icon']")
     private SelenideElement loginIcon;
 
+    // TODO Most all of this locators should be improved
     @FindBy(css = "body > header > div > nav > ul.uui-navigation.nav.navbar-nav.m-l8 > li.dropdown > a")
     private SelenideElement service;
 
@@ -96,11 +92,11 @@ public class SelenideIndexPage {
         }
 
         @Override
-        public String toString(){
+        public String toString() {
             return this.text;
         }
     }
-    
+
 
     public void login(String name, String password) {
         loginIcon.click();
@@ -127,14 +123,14 @@ public class SelenideIndexPage {
     }
 
 
-    public void checkServiceDropdown( Texts[] serviceText) {
-        for (int j = 0; j<serviceText.length; j++) {
+    public void checkServiceDropdown(Texts[] serviceText) {
+        for (int j = 0; j < serviceText.length; j++) {
             serviceDropdown.get(j).shouldHave(text(serviceText[j].toString()));
         }
     }
 
-    public void checkLeftServiceDropdown( Texts[] serviceText) {
-        for (int j = 0; j<serviceText.length; j++) {
+    public void checkLeftServiceDropdown(Texts[] serviceText) {
+        for (int j = 0; j < serviceText.length; j++) {
             leftServiceDropdown.get(j).shouldHave(text(serviceText[j].toString()));
         }
     }
@@ -171,7 +167,6 @@ public class SelenideIndexPage {
 
 
     public void checkCheckboxLogs(DifferentElements[] elem) {
-
         for (int j = 0; j < elem.length; j++) {
             logs.get(elem.length - 1 - j).shouldBe(visible);
             assertTrue(logs.get(elem.length - 1 - j).text().toUpperCase().contains(elem[j].toString()));
@@ -184,7 +179,6 @@ public class SelenideIndexPage {
     }
 
     public void checkRadioLogs(DifferentElements[] elem) {
-
         for (int j = 0; j < elem.length; j++) {
             logs.get(elem.length - 1 - j).shouldBe(visible);
             assertTrue(logs.get(elem.length - 1 - j).text().toUpperCase().contains(elem[j].toString()));
@@ -197,7 +191,6 @@ public class SelenideIndexPage {
     }
 
     public void checkDropdownLogs(DropdownElements[] elem) {
-
         for (int j = 0; j < elem.length; j++) {
             logs.get(elem.length - 1 - j).shouldBe(visible);
             assertTrue(logs.get(elem.length - 1 - j).text().toUpperCase().contains(elem[j].toString()));

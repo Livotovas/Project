@@ -1,23 +1,19 @@
 package hw4;
 
 import base.SeleniumBase;
+import com.codeborne.selenide.Configuration;
 import lesson4.SelenideIndexPage;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.concurrent.TimeUnit;
-
-import static com.codeborne.selenide.Selenide.close;
-import static com.codeborne.selenide.Selenide.open;
-import static com.codeborne.selenide.Selenide.page;
+import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 import static lesson4.SelenideIndexPage.*;
 
-public class SelenideTest extends SeleniumBase{
+// TODO Where is second part of HW ?
+public class SelenideTest extends SeleniumBase {
     private SelenideIndexPage indexPage;
 
 
@@ -27,17 +23,24 @@ public class SelenideTest extends SeleniumBase{
     //}
 
     @BeforeMethod
-    public void initTest(){
+    public void initTest() {
+        Configuration.browser = "chrome";
         //1 Open test site by URL
-        open("https://epam.github.io/JDI/index.html");
+        open("http://epam.github.io/JDI/index.html");
         indexPage = page(SelenideIndexPage.class);
-       // driver.manage().timeouts().pageLoadTimeout(10000, TimeUnit.MINUTES);
+        // driver.manage().timeouts().pageLoadTimeout(10000, TimeUnit.MINUTES);
     }
 
     @AfterMethod
-    public void closeTest(){
+    public void closeTest() {
         close();
     }
+
+    // TODO This test wont work for me
+    //    Element should not be selected {input}
+    //    Element: '<input name="metal" type="radio" value="on" selected:true></input>'
+    //    Actual value:true
+    // TODO PO method should be parametrise by ENUMS
 
     @Test
     public void simpleTest() {
@@ -59,17 +62,20 @@ public class SelenideTest extends SeleniumBase{
         indexPage.checkLeftServiceDropdown(Texts.values());
 
         //7 Open through the header menu Service -> Different Elements Page
+        // TODO You should not open page directly, use menu
         open("https://epam.github.io/JDI/different-elements.html");
         indexPage.checkMenu();
 
         //8 Assert that there is Right Section
+        // TODO Locators should not be here
         indexPage.checkVisible("#mCSB_2_container > section:nth-child(1) > div.info-panel-body.info-panel-body-log");
 
         //9 Assert that there is Left Section
         indexPage.checkVisible("#mCSB_1_container > ul > li.menu-title.active > ul > li:nth-child(6) > a");
 
         //10 Select checkboxes
-        indexPage.clickCheckbox(new DifferentElements[]{DifferentElements.WATER , DifferentElements.WIND});
+        // TODO You can pass different amount of arguments into method
+        indexPage.clickCheckbox(new DifferentElements[]{DifferentElements.WATER, DifferentElements.WIND});
 
         //11 Assert that for each checkbox there is an individual log row and value is corresponded to the status of checkbox. 
         indexPage.checkCheckboxLogs(new DifferentElements[]{DifferentElements.WATER, DifferentElements.WIND});
@@ -82,13 +88,13 @@ public class SelenideTest extends SeleniumBase{
         indexPage.checkRadioLogs(new DifferentElements[]{DifferentElements.SELEN});
 
         //14 Select in dropdown
-        indexPage.clickDropdown(new DropdownElements[] {DropdownElements.YELLOW});
+        indexPage.clickDropdown(new DropdownElements[]{DropdownElements.YELLOW});
 
         //15 Assert that for dropdown there is a log row and value is corresponded to the selected value. 
-        indexPage.checkDropdownLogs(new DropdownElements[] {DropdownElements.YELLOW});
+        indexPage.checkDropdownLogs(new DropdownElements[]{DropdownElements.YELLOW});
 
         //16 Unselect and assert checkboxes
-        indexPage.clickCheckbox(new DifferentElements[]{DifferentElements.WATER , DifferentElements.WIND});
+        indexPage.clickCheckbox(new DifferentElements[]{DifferentElements.WATER, DifferentElements.WIND});
 
         //17 Assert that for each checkbox there is an individual log row and value is corresponded to the status of checkbox. 
         indexPage.checkCheckboxLogs(new DifferentElements[]{DifferentElements.WATER, DifferentElements.WIND});
