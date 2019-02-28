@@ -1,4 +1,4 @@
-package hw2.Exercise3;
+package homeworks.hw2.Exercise3;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
