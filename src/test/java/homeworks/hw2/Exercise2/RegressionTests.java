@@ -1,4 +1,4 @@
-package hw2.Exercise2;
+package homeworks.hw2.Exercise2;
 
 import base.SeleniumBase;
 import org.openqa.selenium.By;
@@ -11,6 +11,7 @@ import org.testng.annotations.Test;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
@@ -22,6 +23,7 @@ public class RegressionTests extends SeleniumBase {
     public void beforeTest() {
         driver = new ChromeDriver();
         driver.manage().window().maximize();
+        driver.manage().timeouts().pageLoadTimeout(10000, TimeUnit.MINUTES);
     }
 
     @AfterTest

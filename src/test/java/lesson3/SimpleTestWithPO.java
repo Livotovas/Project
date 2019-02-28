@@ -10,9 +10,7 @@ import org.testng.annotations.Test;
 
 import java.util.concurrent.TimeUnit;
 
-/**
- * Created by vasuha on 04.02.2019.
- */
+
 public class SimpleTestWithPO {
     private WebDriver driver;
     private IndexPage indexPage ;

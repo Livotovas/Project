@@ -1,18 +1,13 @@
 package lesson4;
 
 
-import com.codeborne.selenide.CollectionCondition;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
-import com.codeborne.selenide.collections.SizeLessThanOrEqual;
+import homeworks.hw4.enums.Users;
 import org.openqa.selenium.support.FindBy;
-import org.testng.Assert;
-
-import java.util.List;
 
 import static com.codeborne.selenide.CollectionCondition.*;
-import static com.codeborne.selenide.Condition.checked;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.$;
@@ -61,6 +56,10 @@ public class SelenideIndexPage {
     @FindBy(css = ".panel-body-list.logs > li")
     private ElementsCollection logs;
 
+    @FindBy(id = "user-name")
+    private SelenideElement userName;
+
+
     public enum DifferentElements {
         WATER,
         EARTH,
@@ -96,16 +95,23 @@ public class SelenideIndexPage {
         }
 
         @Override
-        public String toString(){
+        public String toString() {
             return this.text;
         }
     }
-    
+
 
     public void login(String name, String password) {
         loginIcon.click();
         userField.sendKeys(name);
         passwordField.sendKeys(password);
+        submitButton.click();
+    }
+
+    public void login(Users user) {
+        loginIcon.click();
+        userField.sendKeys(user.login);
+        passwordField.sendKeys(user.password);
         submitButton.click();
     }
 
@@ -127,14 +133,14 @@ public class SelenideIndexPage {
     }
 
 
-    public void checkServiceDropdown( Texts[] serviceText) {
-        for (int j = 0; j<serviceText.length; j++) {
+    public void checkServiceDropdown(Texts[] serviceText) {
+        for (int j = 0; j < serviceText.length; j++) {
             serviceDropdown.get(j).shouldHave(text(serviceText[j].toString()));
         }
     }
 
-    public void checkLeftServiceDropdown( Texts[] serviceText) {
-        for (int j = 0; j<serviceText.length; j++) {
+    public void checkLeftServiceDropdown(Texts[] serviceText) {
+        for (int j = 0; j < serviceText.length; j++) {
             leftServiceDropdown.get(j).shouldHave(text(serviceText[j].toString()));
         }
     }
@@ -203,6 +209,8 @@ public class SelenideIndexPage {
             assertTrue(logs.get(elem.length - 1 - j).text().toUpperCase().contains(elem[j].toString()));
         }
     }
+
+
 }
 
 

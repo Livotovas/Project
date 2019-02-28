@@ -1,4 +1,5 @@
-package hw2.Exercise2;
+package homeworks.hw2.Exercise2;
+
 
 import base.SeleniumBase;
 import org.openqa.selenium.By;
@@ -11,17 +12,19 @@ import org.testng.annotations.Test;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
-public class SmokeOrRegressionTests extends SeleniumBase{
+public class BothSmokeAndRegressionTests extends SeleniumBase{
     private WebDriver driver;
 
     @BeforeTest
     public void beforeTest() {
         driver = new ChromeDriver();
         driver.manage().window().maximize();
+        driver.manage().timeouts().pageLoadTimeout(10000, TimeUnit.MINUTES);
     }
 
     @AfterTest
@@ -30,7 +33,7 @@ public class SmokeOrRegressionTests extends SeleniumBase{
     }
 
 
-    @Test(groups = {"Regression"})
+    @Test(groups = {"Smoke", "Regression"})
     public void GroupCheck1 (){
         driver.navigate().to("https://epam.github.io/JDI/index.html");
 
@@ -101,7 +104,7 @@ public class SmokeOrRegressionTests extends SeleniumBase{
         assertTrue(driver.findElement(By.className("footer-bg")).isDisplayed());
     }
 
-    @Test(groups = {"Regression"})
+    @Test(groups = {"Smoke", "Regression"})
     public void GroupCheck2 () {
         driver.navigate().to("https://epam.github.io/JDI/index.html");
 
@@ -172,7 +175,7 @@ public class SmokeOrRegressionTests extends SeleniumBase{
         assertTrue(driver.findElement(By.className("footer-bg")).isDisplayed());
     }
 
-    @Test(groups = {"Smoke"})
+    @Test(groups = {"Smoke", "Regression"})
     public  void GroupCheck3 () {
         driver.navigate().to("https://epam.github.io/JDI/index.html");
 
