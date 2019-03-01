@@ -1,0 +1,9 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="TestNg Suite" parallel="methods" thread-count="3">
+     <test name="Failing Test with steps and reports" >
+          <packages>
+               <package name="hw5.ex2"/>
+          </packages>
+     </test>
+</suite>
