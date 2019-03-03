@@ -11,6 +11,7 @@ import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 import static homeworks.hw6.enums.HeaderItems.*;
 import static org.testng.Assert.assertEquals;
+
 //for commit
 public class GherkinIndexPage {
 
@@ -61,23 +62,20 @@ public class GherkinIndexPage {
     private ElementsCollection leftNavigationSection;
 
 
-    public void login(String name, String password) {
+    public void login(String login, String password) {
         loginIcon.click();
-        userField.sendKeys(name);
+        userField.sendKeys(login);
         passwordField.sendKeys(password);
         submitButton.click();
     }
 
     public void login(homeworks.hw6.enums.Users user) {
-        loginIcon.click();
-        userField.sendKeys(user.login);
-        passwordField.sendKeys(user.password);
-        submitButton.click();
+        login(user.getLogin(), user.getPassword());
     }
 
-    public void checkLogin (homeworks.hw6.enums.Users user) {
+    public void checkLogin(homeworks.hw6.enums.Users user) {
         userName.shouldBe(visible);
-        userName.shouldHave(text(user.username));
+        userName.shouldHave(text(user.getUsername()));
     }
 
     public void openServicePage(homeworks.hw6.enums.Texts pageName) {
@@ -100,7 +98,7 @@ public class GherkinIndexPage {
         }
     }
 
-    public void checkLeftDropdown(homeworks.hw6.enums.Texts[] text){
+    public void checkLeftDropdown(homeworks.hw6.enums.Texts[] text) {
         leftSectionElements.findBy(text(SERVICE.toString())).click();
         for (int i = 0; i < text.length; i++) {
             leftDropdownElements.get(i).shouldHave(text(text[i].toString()));

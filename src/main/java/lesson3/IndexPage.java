@@ -9,10 +9,6 @@ import org.testng.Assert;
 import java.util.List;
 
 import static org.testng.Assert.*;
-
-/**
- * Created by vasuha on 28.01.2019.
- */
 public class IndexPage {
     @FindBy(css = ".profile-photo")
     private WebElement loginIcon;

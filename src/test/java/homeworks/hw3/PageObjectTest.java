@@ -1,7 +1,8 @@
 package homeworks.hw3;
 
 import base.SeleniumBase;
-import lesson3.IndexPage;
+import homeworks.hw3.enums.HeaderItemsText;
+import homeworks.hw3.enums.UnderIconsText;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.PageFactory;
@@ -11,9 +12,6 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import java.util.concurrent.TimeUnit;
-
-import static lesson3.IndexPage.*;
-import static org.testng.Assert.assertEquals;
 
 public class PageObjectTest extends SeleniumBase{
     private WebDriver driver;
@@ -69,7 +67,7 @@ public class PageObjectTest extends SeleniumBase{
         indexPage.checkIframe();
 
         //9 Switch to the iframe and check that there is Epam logo in the left top conner of iframe
-        indexPage.switchPage("[id='iframe']");
+        indexPage.switchPage();
         indexPage.checkEpamLogo();
 
         //10 Switch to original window back
@@ -79,8 +77,7 @@ public class PageObjectTest extends SeleniumBase{
         indexPage.checkSubHeader();
 
         //12 Assert that JDI GITHUB is a link and has a proper URL
-        indexPage.checkURL("body > div > div.uui-main-container > main > " +
-                "div.main-content > h3:nth-child(3) > a", "https://github.com/epam/JDI");
+        indexPage.checkURL();
 
         //13 Assert that there is Left Section
         indexPage.checkLeftSection();

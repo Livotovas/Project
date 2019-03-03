@@ -14,6 +14,7 @@ import java.util.List;
 import static com.codeborne.selenide.CollectionCondition.size;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Condition.visible;
+
 //for commit
 public class GherkinUsersPage {
 
@@ -41,7 +42,6 @@ public class GherkinUsersPage {
 
     @FindBy(css = "select:nth-of-type(1) option")
     private ElementsCollection droplistValues;
-
 
 
     public void selectVip(UserTableUsers user) {
@@ -96,6 +96,7 @@ public class GherkinUsersPage {
     public void checkLogs(int logSize, boolean condition) {
         logs.filterBy(text(Logs.VIP.toString() + condition)).shouldHave(size(logSize));
     }
+
     public void checkDroplistValues(List<UsersOptions> options) {
         for (int i = 0; i < options.size(); i++) {
             droplistValues.get(i).shouldHave(text(options.get(i).toString()));

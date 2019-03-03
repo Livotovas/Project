@@ -1,16 +1,29 @@
 package homeworks.hw6.enums;
 
+import lombok.Getter;
 
 public enum Users {
     PETER("epam", "1234", "PITER CHAILOVSKII");
 
-    public final String login;
-    public final String password;
-    public final String username;
+    private final String login;
+    private final String password;
+    private final String username;
 
     Users(String login, String password, String username) {
         this.login = login;
         this.password = password;
         this.username = username;
+    }
+
+    public String getLogin() {
+        return login;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public String getUsername() {
+        return username;
     }
 }

@@ -2,15 +2,15 @@ package homeworks.hw6;
 
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
-import homeworks.hw6.enums.Logs;
 import homeworks.hw6.enums.DifferentElements;
-
+import homeworks.hw6.enums.Logs;
 import org.openqa.selenium.support.FindBy;
 
 import static com.codeborne.selenide.CollectionCondition.size;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Condition.visible;
 import static org.testng.Assert.assertTrue;
+
 //for commit
 public class GherkinDifferentElementsPage {
 
@@ -35,18 +35,18 @@ public class GherkinDifferentElementsPage {
     @FindBy(css = ".logs > li")
     private ElementsCollection logs;
 
-    public void mainElementsCheck(){
+    public void mainElementsCheck() {
         checkboxes.shouldHave(size(4));
         radios.shouldHave(size(4));
         dropdown.shouldBe(visible);
         buttons.shouldHave(size(2));
     }
 
-    public void checkRightSection(){
+    public void checkRightSection() {
         rightSection.shouldBe(visible);
     }
 
-    public void checkLeftSection(){
+    public void checkLeftSection() {
         leftSection.shouldBe(visible);
     }
 

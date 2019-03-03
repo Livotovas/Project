@@ -9,9 +9,6 @@ import static java.lang.System.setProperty;
 
 import static com.codeborne.selenide.Selenide.*;
 
-/**
- * Created by vasuha on 30.01.2019.
- */
 public class SelenideBase {
     @BeforeSuite
     public void beforeSuite(){

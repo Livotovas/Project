@@ -69,7 +69,7 @@ public class AssertionSteps {
 
     @Then("^Log is correct for '([^\"]*)'$")
     public void logIsCorrectForColor(DifferentElements color) {
-       differentElementsPage.checkDropdownLogs(color);
+        differentElementsPage.checkDropdownLogs(color);
     }
 
     @And("^(\\d+) NumberType Dropdowns are displayed on Users Table on User Table Page$")
